@@ -8,7 +8,7 @@ if (
 ) {
   BASE_URL = "http://localhost:4567"; // Use your local server URL
 } else {
-  BASE_URL = "https://twdbtest.vercel.app:4567"; // Use your production server URL
+  BASE_URL = "https://twdbtest.vercel.app"; // Use your production server URL
 }
 
 const JWT_TOKEN = localStorage.getItem("token");
