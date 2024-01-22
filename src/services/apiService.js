@@ -1,6 +1,5 @@
 import axios from "axios";
 // const BASE_URL = process.env.REACT_APP_HEROKU_URL
-// const BASE_URL = "http://localhost:4567";
 const BASE_URL = "https://twdbtest.vercel.app";
 // const BASE_URL = 'https://twitter-clon-c52s62efr-michaelsabzevaris-projects.vercel.app/';
 const JWT_TOKEN = localStorage.getItem("token");
@@ -53,7 +52,7 @@ export const signUp = async (data) => {
 };
 export const getProfile = async () => {
   try {
-    const response = await api.get("/profile");
+    const response = await api.get("/app/profile");
     const {
       data: { user },
     } = response;
@@ -64,7 +63,7 @@ export const getProfile = async () => {
 };
 export const getAllProfiles = async () => {
   try {
-    const response = await api.get(`profile/bio/all`);
+    const response = await api.get(`app/profile/bio/all`);
     return response.data;
   } catch (error) {
     throw error;
@@ -72,7 +71,7 @@ export const getAllProfiles = async () => {
 };
 export const createProfile = async (data) => {
   try {
-    const response = await api.post("/profile/bio", data);
+    const response = await api.post("/app/profile/bio", data);
     const { user } = response.data;
     return user;
   } catch (error) {
@@ -82,7 +81,7 @@ export const createProfile = async (data) => {
 
 export const editProfile = async (id, data) => {
   try {
-    const response = await api.put(`/profile/bio/${id}`, data);
+    const response = await api.put(`/app/profile/bio/${id}`, data);
     return response;
   } catch (error) {
     throw error;
@@ -90,7 +89,7 @@ export const editProfile = async (id, data) => {
 };
 export const getImages = async () => {
   try {
-    const response = await api.get(`upload`);
+    const response = await api.get(`app/upload`);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -99,7 +98,7 @@ export const getImages = async () => {
 
 export const getUserNames = async () => {
   try {
-    const response = await api.get(`/profile/users`);
+    const response = await api.get(`/app/profile/users`);
     return response.data;
   } catch (error) {
     throw error;
@@ -108,7 +107,7 @@ export const getUserNames = async () => {
 
 export const getAllTweets = async () => {
   try {
-    const tweets = await api.get(`/tweets`);
+    const tweets = await api.get(`/app/tweets`);
     return tweets.data;
   } catch (error) {
     throw error;
@@ -117,7 +116,7 @@ export const getAllTweets = async () => {
 
 export const postTweet = async (data) => {
   try {
-    const response = await api.post("/tweets", data);
+    const response = await api.post("/app/tweets", data);
     const { user } = response.data;
     return user;
   } catch (error) {
@@ -126,7 +125,7 @@ export const postTweet = async (data) => {
 };
 export const editTweet = async (tweetId, data) => {
   try {
-    const response = await api.put(`tweets/${tweetId}`, data);
+    const response = await api.put(`app/tweets/${tweetId}`, data);
     console.log(tweetId);
     return response;
   } catch (error) {
@@ -135,7 +134,7 @@ export const editTweet = async (tweetId, data) => {
 };
 export const deleteTweet = async (tweetId, data) => {
   try {
-    const response = await api.delete(`tweets/${tweetId}`, data);
+    const response = await api.delete(`app/tweets/${tweetId}`, data);
     return response;
   } catch (error) {
     throw error;
@@ -143,7 +142,7 @@ export const deleteTweet = async (tweetId, data) => {
 };
 export const deleteProfile = async (profileId, data) => {
   try {
-    const response = await api.delete(`profile/bio/${profileId}`, data);
+    const response = await api.delete(`app/profile/bio/${profileId}`, data);
     return response;
   } catch (error) {
     throw error;
@@ -151,7 +150,7 @@ export const deleteProfile = async (profileId, data) => {
 };
 export const deleteAccount = async (id, data) => {
   try {
-    const response = await api.delete(`profile/${id}`, data);
+    const response = await api.delete(`app/profile/${id}`, data);
     return response;
   } catch (error) {
     throw error;
