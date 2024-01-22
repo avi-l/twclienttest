@@ -1,6 +1,6 @@
 import axios from "axios";
 // const BASE_URL = process.env.REACT_APP_HEROKU_URL
-const BASE_URL = "https://twdbtest.vercel.app/";
+const BASE_URL = "https://twdbtest.vercel.app";
 // const BASE_URL = 'https://twitter-clon-c52s62efr-michaelsabzevaris-projects.vercel.app/';
 const JWT_TOKEN = localStorage.getItem("token");
 
