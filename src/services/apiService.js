@@ -1,7 +1,16 @@
 import axios from "axios";
-// const BASE_URL = process.env.REACT_APP_HEROKU_URL
-const BASE_URL = "https://twdbtest.vercel.app";
-// const BASE_URL = 'https://twitter-clon-c52s62efr-michaelsabzevaris-projects.vercel.app/';
+let BASE_URL;
+
+// Check if running in localhost
+if (
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+) {
+  BASE_URL = "http://localhost:4567"; // Use your local server URL
+} else {
+  BASE_URL = "https://twdbtest.vercel.app"; // Use your production server URL
+}
+
 const JWT_TOKEN = localStorage.getItem("token");
 
 export const api = axios.create({
@@ -63,7 +72,7 @@ export const getProfile = async () => {
 };
 export const getAllProfiles = async () => {
   try {
-    const response = await api.get(`app/profile/bio/all`);
+    const response = await api.get(`/app/profile/bio/all`);
     return response.data;
   } catch (error) {
     throw error;
@@ -89,7 +98,7 @@ export const editProfile = async (id, data) => {
 };
 export const getImages = async () => {
   try {
-    const response = await api.get(`app/upload`);
+    const response = await api.get(`/app/upload`);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -125,7 +134,7 @@ export const postTweet = async (data) => {
 };
 export const editTweet = async (tweetId, data) => {
   try {
-    const response = await api.put(`app/tweets/${tweetId}`, data);
+    const response = await api.put(`/app/tweets/${tweetId}`, data);
     console.log(tweetId);
     return response;
   } catch (error) {
@@ -134,7 +143,7 @@ export const editTweet = async (tweetId, data) => {
 };
 export const deleteTweet = async (tweetId, data) => {
   try {
-    const response = await api.delete(`app/tweets/${tweetId}`, data);
+    const response = await api.delete(`/app/tweets/${tweetId}`, data);
     return response;
   } catch (error) {
     throw error;
@@ -142,7 +151,7 @@ export const deleteTweet = async (tweetId, data) => {
 };
 export const deleteProfile = async (profileId, data) => {
   try {
-    const response = await api.delete(`app/profile/bio/${profileId}`, data);
+    const response = await api.delete(`/app/profile/bio/${profileId}`, data);
     return response;
   } catch (error) {
     throw error;
@@ -150,7 +159,7 @@ export const deleteProfile = async (profileId, data) => {
 };
 export const deleteAccount = async (id, data) => {
   try {
-    const response = await api.delete(`app/profile/${id}`, data);
+    const response = await api.delete(`/app/profile/${id}`, data);
     return response;
   } catch (error) {
     throw error;
