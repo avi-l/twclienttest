@@ -53,7 +53,7 @@ export const signUp = async (data) => {
 };
 export const getProfile = async () => {
   try {
-    const response = await api.get("/app/profile");
+    const response = await api.get("/profile");
     const {
       data: { user },
     } = response;
@@ -72,7 +72,7 @@ export const getAllProfiles = async () => {
 };
 export const createProfile = async (data) => {
   try {
-    const response = await api.post("/app/profile/bio", data);
+    const response = await api.post("/profile/bio", data);
     const { user } = response.data;
     return user;
   } catch (error) {
@@ -82,7 +82,7 @@ export const createProfile = async (data) => {
 
 export const editProfile = async (id, data) => {
   try {
-    const response = await api.put(`/app/profile/bio/${id}`, data);
+    const response = await api.put(`/profile/bio/${id}`, data);
     return response;
   } catch (error) {
     throw error;
@@ -99,7 +99,7 @@ export const getImages = async () => {
 
 export const getUserNames = async () => {
   try {
-    const response = await api.get(`/app/profile/users`);
+    const response = await api.get(`/profile/users`);
     return response.data;
   } catch (error) {
     throw error;
@@ -108,7 +108,7 @@ export const getUserNames = async () => {
 
 export const getAllTweets = async () => {
   try {
-    const tweets = await api.get(`/app/tweets`);
+    const tweets = await api.get(`/tweets`);
     return tweets.data;
   } catch (error) {
     throw error;
@@ -117,7 +117,7 @@ export const getAllTweets = async () => {
 
 export const postTweet = async (data) => {
   try {
-    const response = await api.post("/app/tweets", data);
+    const response = await api.post("/tweets", data);
     const { user } = response.data;
     return user;
   } catch (error) {

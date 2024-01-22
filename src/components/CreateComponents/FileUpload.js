@@ -27,7 +27,7 @@ const FileUpload = (props) => {
         },
       };
 
-      await apiRouter.post("/app/upload", formData, config);
+      await apiRouter.post("/upload", formData, config);
       setUploaded(true);
     } catch (error) {
       console.log(error);
@@ -37,13 +37,13 @@ const FileUpload = (props) => {
   const renderFile = () => {
     if (file) {
       return (
-        <div className="file-data">
+        <div className='file-data'>
           <p>File Name: {file.name}</p>
           <p>File Type: {file.type}</p>
           <p>Modification Date: {file.lastModifiedDate.toDateString()}</p>
         </div>
       );
-    } 
+    }
   };
 
   if (uploaded) {
@@ -53,11 +53,11 @@ const FileUpload = (props) => {
     <div>
       <h1>Upload profile picture</h1>
       <div>
-        <input type="file" htmlFor="file" onChange={onFileChange} required />
+        <input type='file' htmlFor='file' onChange={onFileChange} required />
         <br />
         <button
           disabled={!enableSubmit}
-          className="btn btn-primary font-weight-bold rounded"
+          className='btn btn-primary font-weight-bold rounded'
           onClick={onFileUpload}
         >
           Upload!
